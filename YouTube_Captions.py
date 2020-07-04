@@ -15,7 +15,7 @@ split_at = 'watch?v='
 # Extracts the video ID from the URL,
 # throws an error if it is an invalid
 # YouTube URL
-if split_at in URL:
+if 'https://www.youtube.com/watch?v=' in URL:
     video_id = URL.partition(split_at)[2]
 else:
     print("ERROR: This is not a valid YouTube URL")
@@ -26,14 +26,14 @@ else:
 # the captions transcript of the desired video,
 # throws an error if the video doesn't have a captions transcript
 try:
-    trans_list = YouTubeTranscriptApi.get_transcript(video_id)
+    captions_list = YouTubeTranscriptApi.get_transcript(video_id)
 except:
     print("ERROR: This video doesn't have captions")
     sys.exit(0)
 
 
 # Takes the captions form the transcript and puts them into a list
-captions = [ sub['text'] for sub in trans_list ]
+captions = [ sub['text'] for sub in captions_list ]
 
 
 # Gets the current date and formats it
