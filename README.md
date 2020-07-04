@@ -11,7 +11,8 @@ To install this API (for Mac users) use this command in your terminal: pip insta
 
 ## Instructions
 
-Just copy the URL of your desired YouTube video and paste it into the script so that is set equal to the variable called 'URL'.
+Copy the URL of your desired YouTube video and paste it into the script so that it is set equal to the variable called 'URL'.
+
 EX: URL = 'YourVideoURL'
 
 
