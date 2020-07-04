@@ -8,7 +8,7 @@ import os
 # and paste it into the command line when prompted
 
 # Takes in the video URL as input
-URL = input("What is your video's URL: ")
+URL = input("Enter your video's URL: ")
 
 split_at = 'watch?v='
 
