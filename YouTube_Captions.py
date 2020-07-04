@@ -8,7 +8,7 @@ import os
 # and paste it into the command line when prompted
 
 # Takes in the video URL as input
-URL = input("Paste the video URL here: ")
+URL = input("What is your video's URL: ")
 
 split_at = 'watch?v='
 
@@ -18,7 +18,7 @@ split_at = 'watch?v='
 if 'https://www.youtube.com/watch?v=' in URL:
     video_id = URL.partition(split_at)[2]
 else:
-    print("ERROR: This is not a valid YouTube URL")
+    print("ERROR: This is not a valid YouTube URL.")
     sys.exit(0)
 
 
@@ -28,7 +28,7 @@ else:
 try:
     captions_list = YouTubeTranscriptApi.get_transcript(video_id)
 except:
-    print("ERROR: This video doesn't have captions")
+    print("ERROR: This video doesn't have captions.")
     sys.exit(0)
 
 
@@ -46,7 +46,7 @@ date = today.strftime("%b-%d-%Y")
 fileName = "Lecture_" + str(date) + ".txt"
 
 
-# Joins a path to the users Documents folder
+# Joins a path to the user's Documents folder
 # to store the file in that folder
 path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', fileName)
 
