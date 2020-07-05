@@ -32,7 +32,7 @@ except:
     sys.exit(0)
 
 
-# Takes the captions form the transcript and puts them into a list
+# Takes the captions from the transcript and puts them into a list
 captions = [ sub['text'] for sub in captions_list ]
 
 
