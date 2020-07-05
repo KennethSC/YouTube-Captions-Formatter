@@ -9,7 +9,7 @@ __YouTube Transcript/Subtitle API:__
 To install this API (for Mac users) use this command in your terminal: pip install youtube_transcript_api
 
 
-## Instructions
+## Usage
 
 Just copy the URL of your desired YouTube video, run the script, and paste the URL into the command line when prompted.
 
