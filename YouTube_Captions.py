@@ -58,8 +58,8 @@ f = open(path_to_Docs, "w+")
 # Counter that helps with formatting
 lineCounter = 0
 
-# Wites the captions in a formatted
-#  way to the file
+# Writes the captions in a formatted
+# way to the file
 for caption in captions:
     lineCounter += 1
     f.write(str(caption) + ' ')
