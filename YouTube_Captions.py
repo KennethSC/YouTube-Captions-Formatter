@@ -1,5 +1,4 @@
 from youtube_transcript_api import YouTubeTranscriptApi
-from datetime import date
 import sys
 import os
 
@@ -9,6 +8,7 @@ import os
 
 # Takes in the video URL as input
 URL = input("Enter your video's URL: ")
+
 
 split_at = 'watch?v='
 
@@ -26,29 +26,31 @@ else:
 # the captions transcript of the desired video,
 # throws an error if the video doesn't have a captions transcript
 try:
-    captions_list = YouTubeTranscriptApi.get_transcript(video_id)
+    transcript = YouTubeTranscriptApi.get_transcript(video_id)
 except:
     print("ERROR: This video doesn't have captions.")
     sys.exit(0)
 
 
 # Takes the captions from the transcript and puts them into a list
-captions = [ sub['text'] for sub in captions_list ]
+# making a list of sentences.
+captions_list = [ sub['text'] for sub in transcript ]
+
+# Takes the captions_list above and turns it from a list of 
+# sentences to a list of words.
+captions = [word for line in captions_list for word in line.split()]
 
 
-# Gets the current date and formats it
-today = date.today()
-date = today.strftime("%b-%d-%Y")
+# Asks the user what they want the file to be named
+file = input("\nWhat do you want the file to be called?: ")
 
-
-# Sets the defualt file name to
-# 'Lecture_Today's Date.txt'
-fileName = "Lecture_" + str(date) + ".txt"
+# Makes the file a .txt file
+completeName = str(file) + ".txt"
 
 
 # Joins a path to the user's Documents folder
 # to store the file in that folder
-path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', fileName)
+path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', completeName)
 
 
 # Creates and opens the file for writing
@@ -62,16 +64,13 @@ lineCounter = 0
 # way to the file
 for caption in captions:
     lineCounter += 1
+
     f.write(str(caption) + ' ')
     
-    if lineCounter == 8:
+    if lineCounter == 11:
         f.write("\n")
         lineCounter = 0
 
 
 # Closes the file
 f.close() 
-
-
-        
-        
