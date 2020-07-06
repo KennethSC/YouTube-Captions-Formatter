@@ -10,7 +10,11 @@ import os
 URL = input("Enter your video's URL: ")
 
 
+# Every valid YouTube video URL should
+# contain this line. The video ID comes
+# after this line for every URL
 split_at = 'watch?v='
+
 
 # Extracts the video ID from the URL,
 # throws an error if it is an invalid
@@ -36,6 +40,7 @@ except:
 # making a list of sentences.
 captions_list = [ sub['text'] for sub in transcript ]
 
+
 # Takes the captions_list above and turns it from a list of 
 # sentences to a list of words.
 captions = [word for line in captions_list for word in line.split()]
@@ -44,8 +49,12 @@ captions = [word for line in captions_list for word in line.split()]
 # Asks the user what they want the file to be named
 file = input("\nWhat do you want the file to be called?: ")
 
+
 # Makes the file a .txt file
-completeName = str(file) + ".txt"
+if ".txt" not in file:
+    completeName = str(file) + ".txt"
+else:
+    completeName = str(file)
 
 
 # Joins a path to the user's Documents folder
@@ -69,8 +78,9 @@ for caption in captions:
     
     if wordCounter == 11:
         f.write("\n")
-        lineCounter = 0
+        wordCounter = 0
 
 
 # Closes the file
 f.close() 
+
