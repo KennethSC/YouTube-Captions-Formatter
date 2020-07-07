@@ -1,6 +1,6 @@
 ## Description
 
-This script uses the YouTube API to get the captions transcript for a video, creates a file in the users Documents folder with a name they chose, and writes the captions of the desired video to that file in a formatted way. Since classes are now online, some of my professors have been uploading their lectures to YouTube. Now with the help of this script I can take notes during class, but also have notes of everything that was said in that lecture, making it easier and quicker to access/refer to specific information from that lecture by just doing a keyword search on the file containing the formatted captions.
+This script uses the YouTube API to get the captions transcript for a video, creates a file in the users Documents folder with a name they chose, and writes the captions of the desired video to that file in a formatted way. Since classes are now online, some professors have been uploading their lectures to YouTube. Now with the help of this script you can take notes during class, but also have notes of everything that was said in that lecture, making it easier and quicker to access/refer to specific information from that lecture by just doing a keyword search on the file containing the formatted captions.
 
 ## Requirements
 
