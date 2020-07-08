@@ -91,7 +91,7 @@ def format_file(file, captions):
 
 
 # Main driver function that calls
-# all the other functions
+# all the other functions.
 def main():
 
     video_ID = get_URL()
