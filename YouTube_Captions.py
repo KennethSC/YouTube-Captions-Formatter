@@ -1,5 +1,4 @@
 from youtube_transcript_api import YouTubeTranscriptApi
-import sys
 import os
 
 
@@ -20,12 +19,10 @@ def get_URL():
     if 'https://www.youtube.com/watch?v=' in URL:
         video_id = URL.partition(split_at)[2]
     else:
-        print("ERROR: This is not a valid YouTube URL.")
-        sys.exit(0)
+        raise Exception("This is not a valid video URL")
         
         
     return video_id
-
 
 
 # Uses a given function from the YouTube API to get
@@ -37,8 +34,7 @@ def get_transcript(vid_ID):
     try:
         transcript = YouTubeTranscriptApi.get_transcript(vid_ID)
     except:
-        print("ERROR: This video doesn't have captions.")
-        sys.exit(0)
+        raise Exception("This video doesn't have a captions transcript")
 
 
     # Takes the captions from the transcript and puts them into a list
@@ -51,7 +47,6 @@ def get_transcript(vid_ID):
     captions = [word for line in captions_list for word in line.split()]
 
     return captions
-
 
 
 # Asks the user what they want the file to be named,
@@ -71,7 +66,6 @@ def make_file():
     path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', completeName)
 
     return path_to_Docs
-
 
 
 # Creates and opens the file for writing,
@@ -96,7 +90,6 @@ def format_file(file, captions):
     f.close()
 
 
-
 # Main driver function that calls
 # all the other functions
 def main():
@@ -110,7 +103,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
 
