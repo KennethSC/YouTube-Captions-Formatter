@@ -1,5 +1,6 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 import os
+import re
 
 
 # Takes in the video URL as input and
@@ -25,7 +26,6 @@ def get_URL():
     return video_id
 
 
-
 # Uses a given function from the YouTube API to get
 # the captions transcript of the desired video.
 # Throws an error if the video doesn't have a captions transcript,
@@ -45,7 +45,6 @@ def get_transcript(vid_ID):
     return captions_list
 
 
-
 # Asks the user what they want the file to be named,
 # makes the file a .txt file, and joins a path to the user's 
 # 'Documents' folder to store the file in that folder.
@@ -54,16 +53,35 @@ def make_file():
 
     file = input("\nWhat do you want the file to be called?: ")
 
+
     if ".txt" not in file:
         completeName = str(file) + ".txt"
     else:
         completeName = str(file)
 
+    # Gets the file name without the extension
+    name = os.path.splitext(completeName)[0]
 
+    # Creates a path to the users Documents folder
     path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', completeName)
 
-    return path_to_Docs
 
+    fileCounter = 1
+    # Handles if there are duplicate file names
+    while os.path.isfile(path_to_Docs):
+
+        findName = re.findall(name, completeName)
+
+        name = findName[0]
+
+        completeName = str(name) + '(' + str(fileCounter) + ')' + '.txt'
+
+        path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', completeName)
+
+        fileCounter += 1
+
+
+    return path_to_Docs
 
 
 # Creates and opens the file for writing,
@@ -91,6 +109,6 @@ def main():
     format_file(file, captions)
 
 
-
 if __name__ == '__main__':
     main()
+
