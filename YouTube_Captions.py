@@ -1,6 +1,5 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 import os
-import re
 
 
 # Takes in the video URL as input and
@@ -70,11 +69,9 @@ def make_file():
     # Handles if there are duplicate file names
     while os.path.isfile(path_to_Docs):
 
-        findName = re.findall(name, completeName)
+        findName = completeName[0:len(name)]
 
-        name = findName[0]
-
-        completeName = str(name) + '(' + str(fileCounter) + ')' + '.txt'
+        completeName = str(findName) + '(' + str(fileCounter) + ')' + '.txt'
 
         path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', completeName)
 
