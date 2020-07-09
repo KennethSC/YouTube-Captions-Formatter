@@ -25,6 +25,7 @@ def get_URL():
     return video_id
 
 
+
 # Uses a given function from the YouTube API to get
 # the captions transcript of the desired video.
 # Throws an error if the video doesn't have a captions transcript,
@@ -41,12 +42,8 @@ def get_transcript(vid_ID):
     # making a list of sentences.
     captions_list = [ sub['text'] for sub in transcript ]
 
+    return captions_list
 
-    # Takes the captions_list above and turns it from a list of 
-    # sentences to a list of words.
-    captions = [word for line in captions_list for word in line.split()]
-
-    return captions
 
 
 # Asks the user what they want the file to be named,
@@ -68,6 +65,7 @@ def make_file():
     return path_to_Docs
 
 
+
 # Creates and opens the file for writing,
 # writes the captions in a formatted way to 
 # the file, and then closes the file.
@@ -75,18 +73,11 @@ def format_file(file, captions):
     
     f = open(file, "w+")
 
-    # Counter that helps with formatting
-    wordCounter = 0
-
     for caption in captions:
-        wordCounter += 1
 
         f.write(str(caption) + ' ')
+        f.write("\n")
         
-        if wordCounter == 11:
-            f.write("\n")
-            wordCounter = 0
-
     f.close()
 
 
@@ -103,4 +94,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
