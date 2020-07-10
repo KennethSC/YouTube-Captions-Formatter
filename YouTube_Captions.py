@@ -66,7 +66,7 @@ def make_file():
 
 
     fileCounter = 1
-    # Handles if there are duplicate file names
+    # Handles duplicate file names
     while os.path.isfile(path_to_Docs):
 
         findName = completeName[0:len(name)]
