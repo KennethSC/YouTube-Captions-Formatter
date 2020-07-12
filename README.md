@@ -6,7 +6,7 @@ This script uses the YouTube API to get the captions transcript for a video, cre
 
 __YouTube Transcript/Subtitle API:__
 
-To install this API (for Mac users) use this command in your terminal: pip install youtube_transcript_api
+To install this API (for Mac users) use this command in your terminal: **pip install youtube_transcript_api**
 
 ## Usage
 
