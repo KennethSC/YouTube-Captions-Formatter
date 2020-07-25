@@ -13,4 +13,4 @@ To install this API (for Mac users) use this command in your terminal: **pip ins
 Just copy the URL of your desired YouTube video, run the script, paste the URL into the command line when prompted, and enter what you want the file to be called.
 
 
-To access the created file, just go to your 'Documents' folder and open the file with the specified name.
+To access the created file, go to your 'Documents' folder and open the file with the specified name.
