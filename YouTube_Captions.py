@@ -15,12 +15,10 @@ def get_URL():
     # after this line for every URL
     split_at = 'watch?v='
 
-
     if 'https://www.youtube.com/watch?v=' in URL:
         video_id = URL.partition(split_at)[2]
     else:
         raise Exception("This is not a valid video URL")
-        
         
     return video_id
 
@@ -35,7 +33,6 @@ def get_transcript(vid_ID):
         transcript = YouTubeTranscriptApi.get_transcript(vid_ID)
     except:
         raise Exception("This video doesn't have a captions transcript")
-
 
     # Takes the captions from the transcript and puts them into a list
     # making a list of sentences.
@@ -52,7 +49,6 @@ def make_file():
 
     file = input("\nWhat do you want the file to be called?: ")
 
-
     if ".txt" not in file:
         completeName = str(file) + ".txt"
     else:
@@ -68,11 +64,8 @@ def make_file():
     fileCounter = 1
     # Handles duplicate file names
     while os.path.isfile(path_to_Docs):
-
         findName = completeName[0:len(name)]
-
         completeName = str(findName) + '(' + str(fileCounter) + ')' + '.txt'
-
         path_to_Docs = os.path.join(os.path.expanduser('~'), 'Documents', completeName)
 
         fileCounter += 1
@@ -89,7 +82,6 @@ def format_file(file, captions):
     f = open(file, "w+")
 
     for caption in captions:
-
         f.write(str(caption) + ' ')
         f.write("\n")
         
